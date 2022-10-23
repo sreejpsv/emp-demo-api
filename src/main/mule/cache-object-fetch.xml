@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<flow name="cache-object-fetchFlow" doc:id="ad3358cf-ea3a-4dd0-9027-1bdd0ffa2a04" >
+		<http:listener doc:name="Listener" doc:id="76e7c30e-14e3-4972-ac31-f13d06e20a0a" config-ref="HTTP_Listener_config" path="/demo/cache/fetch"/>
+		<os:retrieve doc:name="Retrieve" doc:id="dda13649-8b90-4208-abbb-39cce3c52731" key="key001" objectStore="Object_store">
+			<os:default-value ><![CDATA[not found]]></os:default-value>
+		</os:retrieve>
+		<logger level="INFO" doc:name="Logger" doc:id="894742a4-f26b-4be0-bcf8-2f93639f0fa1" message="Fetch log - #[payload]"/>
+	</flow>
+</mule>

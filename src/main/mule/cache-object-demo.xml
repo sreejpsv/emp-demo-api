@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+	<os:object-store name="Object_store" doc:name="Object store" doc:id="ca616720-7c5e-4761-9f50-e61b725db36b" />
+	<flow name="cache-object-demoFlow" doc:id="3a1d84e5-ec25-4633-b33c-ad82935f2b65" >
+		<http:listener doc:name="Listener" doc:id="29d85d12-ff01-4a84-b456-03584b4adf2b" config-ref="HTTP_Listener_config" path="/demo/cache/object"/>
+		<os:store doc:name="Store" doc:id="42579e63-6bde-4741-a952-5a7f3ff6998b" key="key001" objectStore="Object_store">
+			<os:value ><![CDATA[#["Key001 stored"]]]></os:value>
+		</os:store>
+	</flow>
+</mule>
